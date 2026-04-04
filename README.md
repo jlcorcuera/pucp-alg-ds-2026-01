@@ -45,11 +45,6 @@ The course is organized into eleven chapters. Each chapter has a dedicated folde
 
 These complementary topics will help you build a strong foundation to approach and solve the problems presented in the chapters:
 
-- **Mathematical Induction**: Essential for understanding recursion and proving algorithm correctness.
-- **Master Theorem**: Useful for analyzing the time complexity of divide-and-conquer algorithms.
-- **Graph Theory Basics**: Fundamental concepts (vertices, edges, paths, connectivity) crucial for understanding graphs.
-- **Dynamic Memory Allocation**: Key for implementing dynamic data structures like Linked Lists and Trees in C++.
-- **Object-Oriented Programming (OOP)**: Understanding classes, pointers, and object lifetimes is vital for robust data structure implementations.
 - **Bit Masking**: [`rel-top-bit-masking/`](./rel-top-bit-masking/)
 
 ---
