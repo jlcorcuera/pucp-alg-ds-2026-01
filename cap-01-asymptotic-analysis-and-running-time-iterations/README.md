@@ -1,4 +1,4 @@
-# Comprehensive Summary: Computational Complexity and Algorithm Analysis
+# Chapter 1: Asymptotic Analysis and Running Time Calculation (Iterations only)
 
 This document serves as a technical foundation for understanding algorithm efficiency, mathematical growth rate notations, and the standardized methodologies used to calculate computational complexity.
 
