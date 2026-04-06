@@ -19,7 +19,7 @@ void solve(int P, int B, int F, SecurityCheck security_checks[NUM_SECURITY_CHECK
         int current_solution[NUM_SECURITY_CHECKS];
         int current_solution_index = 0;
         for (int security_check = 0; security_check < NUM_SECURITY_CHECKS; security_check++) {
-            if ((combination >> security_check) & 1) {
+            if (combination >> security_check & 1) {
                 current_cost += security_checks[security_check].cost;
                 current_benefit += security_checks[security_check].benefit;
                 current_false_negatives += security_checks[security_check].false_negatives;
@@ -48,5 +48,7 @@ int main() {
     };
     int P=50000, B=100, F=3;
     solve(P, B, F, security_checks);
+    int result = 4 >> 2 & 1;
+    cout << "result " << result << endl;
     return 0;
 }
