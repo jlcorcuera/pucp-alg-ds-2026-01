@@ -12,14 +12,6 @@ void copy(int N, int source[], int destination[]) {
     }
 }
 
-void copy_bidimensional(int indexes_by_disk[], int source[TOTAL_DISKS][TOTAL_TABLES], int destination[TOTAL_DISKS][TOTAL_TABLES]) {
-    for (int i = 0; i < TOTAL_DISKS; i++) {
-        for (int j = 0; j < indexes_by_disk[i]; j++) {
-            destination[i][j] = source[i][j];
-        }
-    }
-}
-
 void solve(int tables[TOTAL_TABLES], int disks[TOTAL_DISKS]) {
     int num_combinations = pow(TOTAL_DISKS, TOTAL_TABLES);
     int max_iops = -1;
