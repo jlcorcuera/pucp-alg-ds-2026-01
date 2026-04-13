@@ -26,14 +26,22 @@ Before proceeding with combinatorial exhaustive search problems in this chapter,
 ## 📝 Problem Descriptions and Algorithms
 
 ### 1. Security checks in a Bank entity problem
-*The implementation and algorithm discussion for this problem will be covered in the next lecture.*
+* **Algorithm Logic:** This approach uses bitmasking to generate all $2^N$ possible subsets of the security checks. The $i$-th bit of the loop integer dictates whether the $i$-th security check is selected ($1$) or excluded ($0$). The subset algorithm individually tallies and filters combinations, only printing subsets that align with the specific budget limits, minimum benefit constraints, and false negative thresholds.
+
+**[Source Code](./security_control_checks)**
 
 ### 2. DB Table assignment problem
-*The implementation and algorithm discussion for this problem will be covered in the next lecture.*
+* **Algorithm Logic:** Because each of the $N$ tables operates by getting assigned to one of $K$ separate disjoint disks, there are exactly $K^N$ possible allocations. The algorithm iterates an integer up to $K^N-1$, extracting its base-$K$ digits (via consecutive modulus and integer division operations) to uniquely map each table to a specific disk. For every valid arrangement that respects capacity conditions, it tracks and returns the combination containing the most optimal leftover IOPS.
+
+**[Source Code](./dba_problem)**
 
 ### 3. The cookie grouping problem
-*The implementation and algorithm discussion for this problem will be covered in the next lecture.*
+*To be develop during the lecture*
 
 ### 4. The 8-queens problem
 *This is a classical problem; it consists of placing 8 queens on an 8x8 chess board without them attacking each other.*
+
+* **Algorithm Logic:** The implemented unstructured brute-force baseline treats the entire matrix configuration as a flattened array space. It loops a bitmask integer covering all $2^{N \times N}$ board possibilities. Any subset featuring exactly $N$ bits set (precisely $N$ deployed queens) constructs a board representation and runs a validity sweep ensuring no queens threaten each other vertically, horizontally, or diagonally.
+
+**[Source Code](./n_queens)**
 
