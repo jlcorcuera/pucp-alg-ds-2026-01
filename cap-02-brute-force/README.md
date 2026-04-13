@@ -19,6 +19,7 @@ Before proceeding with combinatorial exhaustive search problems in this chapter,
 | [Security checks in a Bank entity problem](#1-security-checks-in-a-bank-entity-problem) | Question 1, Lab 01, 2025-2 |
 | [DB Table assignment problem](#2-db-table-assignment-problem) | Question 1, Lab 01, 2025-1 |
 | [The cookie grouping problem](#3-the-cookie-grouping-problem) | Question 1, Lab 01, 2024-2 |
+| [The 8-queens problem](#4-the-8-queens-problem) | Classic Problem |
 
 ---
 
@@ -32,4 +33,7 @@ Before proceeding with combinatorial exhaustive search problems in this chapter,
 
 ### 3. The cookie grouping problem
 *The implementation and algorithm discussion for this problem will be covered in the next lecture.*
+
+### 4. The 8-queens problem
+*This is a classical problem; it consists of placing 8 queens on an 8x8 chess board without them attacking each other.*
 
