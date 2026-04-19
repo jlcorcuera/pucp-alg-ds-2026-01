@@ -16,29 +16,35 @@ Before proceeding with combinatorial exhaustive search problems in this chapter,
 
 | Problem Name | Source |
 |---|---|
-| [Security checks in a Bank entity problem](#1-security-checks-in-a-bank-entity-problem) | Question 1, Lab 01, 2025-2 |
-| [DB Table assignment problem](#2-db-table-assignment-problem) | Question 1, Lab 01, 2025-1 |
-| [The cookie grouping problem](#3-the-cookie-grouping-problem) | Question 1, Lab 01, 2024-2 |
-| [The 8-queens problem](#4-the-8-queens-problem) | Classic Problem |
+| [Dentist appointments optimization problem](#1-dentist-appointments-optimization-problem) | Lab 01, 2026-1 |
+| [Security checks in a Bank entity problem](#2-security-checks-in-a-bank-entity-problem) | Question 1, Lab 01, 2025-2 |
+| [DB Table assignment problem](#3-db-table-assignment-problem) | Question 1, Lab 01, 2025-1 |
+| [The cookie grouping problem](#4-the-cookie-grouping-problem) | Question 1, Lab 01, 2024-2 |
+| [The 8-queens problem](#5-the-8-queens-problem) | Classic Problem |
 
 ---
 
 ## 📝 Problem Descriptions and Algorithms
 
-### 1. Security checks in a Bank entity problem
+### 1. Dentist appointments optimization problem
+* **Algorithm Logic:** Because each of the 8 teeth can be assigned to one of 3 appointments or skipped altogether, there are exactly $4^8$ possible choices. The algorithm iterates an integer up to $4^8-1$, extracting its base-4 digits (via consecutive modulus and integer division operations) to uniquely map each tooth to a specific appointment or to a skip state. For every valid arrangement that respects the time limits of each appointment, it tracks and returns the combination that yields the highest total profit.
+
+**[Source Code](./202601_lab01_dentist_appointments_optimization)**
+
+### 2. Security checks in a Bank entity problem
 * **Algorithm Logic:** This approach uses bitmasking to generate all $2^N$ possible subsets of the security checks. The $i$-th bit of the loop integer dictates whether the $i$-th security check is selected ($1$) or excluded ($0$). The subset algorithm individually tallies and filters combinations, only printing subsets that align with the specific budget limits, minimum benefit constraints, and false negative thresholds.
 
 **[Source Code](./security_control_checks)**
 
-### 2. DB Table assignment problem
+### 3. DB Table assignment problem
 * **Algorithm Logic:** Because each of the $N$ tables operates by getting assigned to one of $K$ separate disjoint disks, there are exactly $K^N$ possible allocations. The algorithm iterates an integer up to $K^N-1$, extracting its base-$K$ digits (via consecutive modulus and integer division operations) to uniquely map each table to a specific disk. For every valid arrangement that respects capacity conditions, it tracks and returns the combination containing the most optimal leftover IOPS.
 
 **[Source Code](./dba_problem)**
 
-### 3. The cookie grouping problem
+### 4. The cookie grouping problem
 *To be develop during the lecture*
 
-### 4. The 8-queens problem
+### 5. The 8-queens problem
 *This is a classical problem; it consists of placing 8 queens on an 8x8 chess board without them attacking each other.*
 
 * **Algorithm Logic:** The implemented unstructured brute-force baseline treats the entire matrix configuration as a flattened array space. It loops a bitmask integer covering all $2^{N \times N}$ board possibilities. Any subset featuring exactly $N$ bits set (precisely $N$ deployed queens) constructs a board representation and runs a validity sweep ensuring no queens threaten each other vertically, horizontally, or diagonally.

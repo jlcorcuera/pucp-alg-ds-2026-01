@@ -28,37 +28,45 @@ The lecture slides demonstrate recursion through several classic computing probl
 
 | Problem Name | Description |
 |---|---|
-| [1. Maximum in Array](#1-maximum-in-array) | Find the maximum number in an array of N integers. |
-| [2. Maximum in Matrix](#2-maximum-in-matrix) | Find the maximum number in a matrix of N x M integers. |
-| [3. Base 10 to Base 2](#3-base-10-to-base-2) | Print a base-10 number in base-2. |
-| [4. Triangle Pattern](#4-triangle-pattern) | Generate an asterisk pattern based on two bounds. |
+| [1. Robot exploration problem](#1-robot-exploration-problem) | Explore a 2D matrix to count artifacts given a coverage limit. |
+| [2. Maximum in Array](#2-maximum-in-array) | Find the maximum number in an array of N integers. |
+| [3. Maximum in Matrix](#3-maximum-in-matrix) | Find the maximum number in a matrix of N x M integers. |
+| [4. Base 10 to Base 2](#4-base-10-to-base-2) | Print a base-10 number in base-2. |
+| [5. Triangle Pattern](#5-triangle-pattern) | Generate an asterisk pattern based on two bounds. |
 
 ---
 
 ## 📝 Problem Descriptions
 
-### 1. Maximum in Array
+### 1. Robot exploration problem
+Implement a recursive function simulating a robot placed in a 2D matrix that scans and counts artifacts ('A') within a specified coverage limit.
+
+* **Recursive Strategy:** The recursion creates branching paths, exploring adjacent artifact coordinates by incrementing or decrementing indices. Each recursive call decrements the `coverage` capacity, acting as a base case once it reaches 0. During exploration, valid artifacts are tallied and the path is marked with `*` until the maximum recursive depth defined by the coverage is fully explored.
+
+**[Source Code](./202601_lab01_robot_problem)**
+
+### 2. Maximum in Array
 Implement a recursive function to find the maximum number in an array of $N$ integers.
 
 * **Recursive Strategy:** The problem can be divided into a smaller subproblem by comparing the current element of the array against the maximum of the rest of the array. The base case is reached when targeting the last remaining element, which is returned as the maximum by default.
 
 **[Source Code](./max_element_in_array)**
 
-### 2. Maximum in Matrix
+### 3. Maximum in Matrix
 Implement a recursive function to find the maximum number in a matrix of $N \times M$ integers.
 
 * **Recursive Strategy:** Similar to a 1D array, you can virtually flatten the matrix and use a single index that increments up to $N \times M - 1$. The maximum is found by comparing the current cell's value with the recursively obtained maximum of the remaining cells. The base case occurs when returning the final cell.
 
 **[Source Code](./max_element_in_matrix)**
 
-### 3. Base 10 to Base 2
+### 4. Base 10 to Base 2
 Implement a recursive function that takes a base-10 number as its only parameter and prints it in base-2.
 
 * **Recursive Strategy:** The base-2 representation involves continuously dividing the number by 2 and extracting the remainders. By making the recursive call with the quotient (`n / 2`) *before* printing the remainder (`n % 2`), the call stack naturally reverses the output, ensuring the binary sequence is printed in the correct, most-significant-bit-first order. The base case is when the number becomes 0.
 
 **[Source Code](./base10_2_base2)**
 
-### 4. Triangle Pattern
+### 5. Triangle Pattern
 Implement a recursive function with the following signature: `triangle(int a, int b)`. This function should generate a pattern like the following:
 
 ```text
