@@ -36,6 +36,15 @@ bool solve(int board[N][M], int row, int col, int level) {
     }
     board[row][col] = level;
 
+
+
+    if (solve(board, row + 1, col, level)) {
+        return true;
+    }
+    if (solve(board, row, col + 1, level)) {
+        return true;
+    }
+
     if (col == M - 1) {
         /*
          *  Fix hecho por:
@@ -51,12 +60,6 @@ bool solve(int board[N][M], int row, int col, int level) {
         return true;
     }
 
-    if (solve(board, row + 1, col, level)) {
-        return true;
-    }
-    if (solve(board, row, col + 1, level)) {
-        return true;
-    }
     if (solve(board, row - 1, col, level)) {
         return true;
     }
