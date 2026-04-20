@@ -37,10 +37,18 @@ bool solve(int board[N][M], int row, int col, int level) {
     board[row][col] = level;
 
     if (col == M - 1) {
-        if (row > 0) {
-            solve(board, row - 1, 0, level + 1);
-            return true;
-        }
+        /*
+         *  Fix hecho por:
+         *      Estudiante: HECTOR LEONARDO BONIFACIO ESPINOZA
+         *      Email: a20232259@pucp.edu.pe
+         *      Descripción:
+         *          Iniciamos siempre lo más pegado al camino anterior a nivel de fila
+                    (N-1) pos inicial, "- level" para ajustar al nivel actual.
+                    El bug era que cuando se llegaba a la columna M - 1 se usaba el row en esa columna - 1
+                    pero a ese punto el robot ya se encuentra en un row distinto al que se inicio el nivel actual
+         */
+        solve(board, N - level-1, 0, level + 1);
+        return true;
     }
 
     if (solve(board, row + 1, col, level)) {
