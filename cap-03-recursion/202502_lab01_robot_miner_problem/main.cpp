@@ -31,12 +31,20 @@ void print_board(int board[N][M]) {
 }
 
 bool solve(int board[N][M], int row, int col, int level) {
-    if (row < 0 || row >= N || col < 0 || col >= M || board[row][col] != -1) {
+    if (row < 0 || row >= N || col < 0 || col >= M) {
         return false;
     }
+    if (board[row][col] != -1) {
+        return false;
+    }
+
     board[row][col] = level;
 
-
+    cout << "level " << level << endl;
+    if (row <= N - 2 && board[row][0] < level) {
+         solve(board, row - 1, 0, level);
+         return false;
+    }
 
     if (solve(board, row + 1, col, level)) {
         return true;
@@ -72,9 +80,9 @@ int main() {
     int board[N][M];
     int initial_level = 1;
     init_board(board);
-    board[N - 3][10] = 0;
-    board[N - 2][10] = 0;
-    board[N - 1][10] = 0;
+    board[N - 3][1] = 0;
+    board[N - 2][1] = 0;
+    board[N - 1][1] = 0;
     /*
         board[N - 3][5] = 0;
         board[N - 2][5] = 0;
