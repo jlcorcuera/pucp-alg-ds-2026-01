@@ -9,7 +9,7 @@ This document outlines the principles for calculating the computational complexi
     2. **The Recursive Step:** Represented by the time taken by the recursive call plus any additional operations performed during that step (e.g., $T(n-1) + k_2$).
 
 ## ⚙️ The Replacement Technique
-To find the asymptotic upper bound (Big O notation) of a recurrence equation, the text demonstrates the **replacement technique**. This involves iteratively substituting the recursive term with its own definition to discover a recognizable mathematical pattern or series. By evaluating the pattern until reaching the base case, the total computational complexity can be deduced.
+To find the asymptotic upper bound (Big O notation) of a recurrence equation, the **replacement technique** is used. This involves iteratively substituting the recursive term with its own definition to discover a recognizable mathematical pattern or series. By evaluating the pattern until reaching the base case, the total computational complexity can be deduced.
 
 ## 📚 Complexity Classes and Examples
 The material provides three distinct algorithmic examples to demonstrate how different recursive structures lead to different time complexities:
