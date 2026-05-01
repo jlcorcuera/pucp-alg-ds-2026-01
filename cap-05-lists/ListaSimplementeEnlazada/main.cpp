@@ -45,6 +45,8 @@ void sortv2(struct Lista & listaTAD) {
     listaTAD.inicio=nueva;
 }
 
+
+// TODO: need to implement sort by changing the references
 void sort(struct Lista listaTAD) {
     NodoLista* anteriorI = nullptr;
     NodoLista* anteriorJ = nullptr;
