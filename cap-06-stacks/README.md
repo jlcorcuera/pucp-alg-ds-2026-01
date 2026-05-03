@@ -22,9 +22,18 @@ To demonstrate the algorithmic utility of stacks, here are two extensive practic
 
 ### 1. Evaluating Postfix (Reverse Polish) Expressions
 *   **Scenario:** Calculating arithmetic expressions where operators appear after their operands (e.g., evaluating `AB* CD/-`). This notation is advantageous because it entirely avoids the need for parentheses to dictate order of operations.
-*   **Stack Implementation:** The algorithm reads the expression character by character. If it reads an operand (a number), it pushes it onto the stack. When it reads an operator (like `+` or `*`), it pops the necessary operands from the top of the stack, performs the calculation, and immediately pushes the resulting value back onto the stack. This cycle continues until the expression ends, at which point the final remaining value is popped as the total result.
+*   **Stack Implementation Algorithm:** 
+    1. Create an empty stack.
+    2. While there are characters in the expression:
+        * Get the next symbol `X`.
+        * If `X` is an operand, push it onto the stack (`push(X)`).
+        * If `X` is an operator:
+            * Pop the top two operands from the stack.
+            * Calculate the result of applying the operator to these operands.
+            * Push the calculated result back onto the stack.
+    3. Once the expression ends, the final total value is obtained by popping the last remaining element from the stack.
 
 ### 2. Maze Traversal and Backtracking
-*   **Scenario:** Finding a valid path through a two-dimensional grid from the top-left to the bottom-right corner. In this matrix, a '1' represents a free space and a '0' represents an impassable wall.
-*   **Stack Implementation:** The algorithm explores the grid by identifying all valid adjacent moves (spaces marked '1') and pushing those coordinates onto the stack. It then pops the top move to physically advance to that cell, marking the traversed path. 
-*   **Handling Dead Ends:** If the algorithm hits a dead end where there are no valid forward moves, the stack proves its worth. Because unexplored valid moves were saved on the stack earlier, the algorithm can pop the most recent alternative move, effectively "backtracking" to a previous fork in the road to try a different route until the maze is solved.
+*   **Scenario:** Finding a valid path through a two-dimensional integer matrix from the top-left to the bottom-right corner. In this matrix, a `1` represents a free space and a `0` represents an impassable wall.
+*   **Stack Implementation:** The algorithm explores the grid by identifying all valid adjacent moves (destinations within the grid marked with a `1`) and pushing those coordinates onto the stack. It then pops the top move to physically advance to that cell. As it traverses the maze, it changes the `1` to a `3` to indicate the path that has been followed.
+*   **Handling Dead Ends:** If the algorithm hits a dead end where there are no valid forward moves but the stack is not empty, it extracts the most recent alternative move from the stack, effectively "backtracking" to a previous fork in the road to try a different route. At the end of the algorithm, the final valid route is often marked distinctively (e.g., with a `7`).
