@@ -43,3 +43,4 @@ CMakeLists.txt
 # IDE and build directories
 .idea/
 cmake-build-*/
+build/
