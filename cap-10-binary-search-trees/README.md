@@ -34,7 +34,10 @@ Before proceeding with the problems in this chapter, it is highly recommended to
 ## 📝 Problem Descriptions and Algorithms
 
 ### 1. Zig-Zag order traversal
-* **Algorithm Logic:** This algorithm traverses a Binary Search Tree (BST) level by level but alternates the printing direction for each level (left-to-right for the first level, right-to-left for the second, left-to-right for the third, and so on). The optimal $O(N)$ solution is purely iterative and utilizes two Stacks (or a Stack and a Queue) to manage the alternating order. By tracking the current level's nodes in one stack and pushing their children into the second stack in the appropriate direction (left-then-right or right-then-left depending on the current level's direction), the desired zigzag pattern is achieved in a single pass without using recursion.
+* **Algorithm Logic:** This algorithm traverses a Binary Search Tree (BST) level by level but alternates the printing direction for each level (left-to-right for the first level, right-to-left for the second, and so on). Based on the provided source code, three different iterative approaches are explored:
+  - **Optimal $O(N)$ Solution**: Utilizes two Abstract Data Types (like two Stacks, or a Stack and a Queue) to manage the alternating order. It tracks the current level's nodes in one stack and pushes their children into the second stack in the appropriate direction, achieving the zigzag pattern in a single pass.
+  - **$O(N \log N)$ Solution**: An alternative approach that first calculates the height of the tree and then iterates through each level sequentially, printing the nodes from left to right or right to left based on the current level.
+  - **Single Queue $O(N \log N)$ Solution**: A variation of the previous approach that minimizes space by utilizing only one single Queue (one TAD) to manage the level-by-level processing.
 
 **[Source Code](./202601_lab05_p01)**
 
