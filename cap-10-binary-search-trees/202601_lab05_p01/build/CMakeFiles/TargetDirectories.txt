@@ -1,5 +1,0 @@
-/mnt/data/PUCP/courses/Algoritmia y Estructura de Datos/2026-1/abb/ArbolBinarioBusqueda/build/CMakeFiles/ArbolBinarioBusqueda.dir
-/mnt/data/PUCP/courses/Algoritmia y Estructura de Datos/2026-1/abb/ArbolBinarioBusqueda/build/CMakeFiles/ArbolBinarioBusqueda_n_log_n.dir
-/mnt/data/PUCP/courses/Algoritmia y Estructura de Datos/2026-1/abb/ArbolBinarioBusqueda/build/CMakeFiles/ArbolBinarioBusqueda_n_log_n_one_tad.dir
-/mnt/data/PUCP/courses/Algoritmia y Estructura de Datos/2026-1/abb/ArbolBinarioBusqueda/build/CMakeFiles/edit_cache.dir
-/mnt/data/PUCP/courses/Algoritmia y Estructura de Datos/2026-1/abb/ArbolBinarioBusqueda/build/CMakeFiles/rebuild_cache.dir

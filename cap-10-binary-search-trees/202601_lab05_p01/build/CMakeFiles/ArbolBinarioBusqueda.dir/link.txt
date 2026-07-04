@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/ArbolBinarioBusqueda.dir/lab05_p1_o_n_main.cpp.o CMakeFiles/ArbolBinarioBusqueda.dir/BibliotecaArbolBinarioBusqueda/funcionesArbolBinarioBusqueda.cpp.o CMakeFiles/ArbolBinarioBusqueda.dir/BibliotecaCola/funcionesCola.cpp.o -o ArbolBinarioBusqueda 
