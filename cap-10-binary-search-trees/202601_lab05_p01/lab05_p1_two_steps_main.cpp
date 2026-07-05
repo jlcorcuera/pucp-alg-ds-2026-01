@@ -33,69 +33,83 @@ NodoArbolBinarioBusqueda* obtenerNodo(NodoArbolBinarioBusqueda* nodo, int elemen
 void zigZagOrder(ArbolBinarioBusqueda arbol) {
     if (esArbolVacio(arbol)) return;
 
-    // Step 1: Store all nodes level by level using MARCADOR_NULO as separator
-    Cola colaBFS; 
-    construir(colaBFS);
+    // Remember: only two TADs are allowed!
+    Cola cola; 
+    construir(cola);
     
-    Cola colaFinal; 
-    construir(colaFinal);
+    Pila pila; 
+    construir(pila);
 
-    encolar(colaBFS, {arbol.raiz->elemento.numero});
-    encolar(colaBFS, {MARCADOR_NULO});
+    // Step 1: Traverse the tree and temporarily save them in the stack (it will be in reverse order)
+    encolar(cola, {arbol.raiz->elemento.numero});
+    encolar(cola, {MARCADOR_NULO});
 
-    while (!esColaVacia(colaBFS)) {
-        int numero = desencolar(colaBFS).numero;
-        encolar(colaFinal, {numero});
+    while (!esColaVacia(cola)) {
+        int numero = desencolar(cola).numero;
+        apilar(pila, {numero, 0});
 
         if (numero == MARCADOR_NULO) {
-            if (!esColaVacia(colaBFS)) {
-                encolar(colaBFS, {MARCADOR_NULO});
+            if (!esColaVacia(cola)) {
+                encolar(cola, {MARCADOR_NULO});
             }
         } else {
             NodoArbolBinarioBusqueda* nodo = obtenerNodo(arbol.raiz, numero);
             if (nodo) {
                 if (nodo->izquierda) {
-                    encolar(colaBFS, {nodo->izquierda->elemento.numero});
+                    encolar(cola, {nodo->izquierda->elemento.numero});
                 }
                 if (nodo->derecha) {
-                    encolar(colaBFS, {nodo->derecha->elemento.numero});
+                    encolar(cola, {nodo->derecha->elemento.numero});
                 }
             }
         }
     }
 
-    // Step 2: Iterate the final cola and print in Zig-Zag
-    Pila pilaInversa;
-    construir(pilaInversa);
+    // At this point, we have the elements in the Stack in bottom-up order
+    // It is required to change to top-down order
+    while (!esPilaVacia(pila)) {
+        encolar(cola, {desapilar(pila).numero});
+    }
+    // From Cola -> Pila result: the Stack is in top-down order
+    while (!esColaVacia(cola)) {
+        apilar(pila, {desencolar(cola).numero, 0});
+    }
+    // From Pila -> Cola result: the Queue is in top-down order ready for use in step 2
+    while (!esPilaVacia(pila)) {
+        encolar(cola, {desapilar(pila).numero});
+    }
+
+    // Step 2: Iterate the Queue and print in Zig-Zag
     bool izquierdaDerecha = true;
     int nivel = 1;
 
     cout << "Nivel 1: ";
 
-    while (!esColaVacia(colaFinal)) {
-        int val = desencolar(colaFinal).numero;
+    while (!esColaVacia(cola)) {
+        int val = desencolar(cola).numero;
 
         if (val == MARCADOR_NULO) {
-            // If going from right to left, print all the numbers accumulated in the stack
+            // If going right to left, print the stack content
             if (!izquierdaDerecha) {
-                while (!esPilaVacia(pilaInversa)) {
-                    cout << desapilar(pilaInversa).numero << " ";
+                while (!esPilaVacia(pila)) {
+                    cout << desapilar(pila).numero << " ";
                 }
             }
             cout << endl;
 
-            if (!esColaVacia(colaFinal)) {
+            // Next level
+            if (!esColaVacia(cola)) {
                 nivel++;
                 cout << "Nivel " << nivel << ": ";
                 izquierdaDerecha = !izquierdaDerecha;
             }
         } else {
             if (izquierdaDerecha) {
-                // If going from left to right, print the number directly
+                // If going left to right, print the number
                 cout << val << " ";
             } else {
-                // If going from right to left, push to the stack to reverse the order
-                apilar(pilaInversa, {val, 0});
+                // If going right to left, stack the number to print it in the next iteration
+                apilar(pila, {val, 0});
             }
         }
     }
