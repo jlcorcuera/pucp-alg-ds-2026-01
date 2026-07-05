@@ -7,6 +7,8 @@
 #include <iostream>
 #include "BibliotecaCola_numero/Cola.h"
 #include "BibliotecaCola_numero/funcionesCola.h"
+#include "BibliotecaPila/Pila.h"
+#include "BibliotecaPila/funcionesPila.h"
 #include "BibliotecaArbolBinarioBusqueda/ArbolBinarioBusqueda.h"
 #include "BibliotecaArbolBinarioBusqueda/funcionesArbolBinarioBusqueda.h"
 
@@ -30,44 +32,58 @@ NodoArbolBinarioBusqueda* obtenerNodo(NodoArbolBinarioBusqueda* nodo, int elemen
 void zigZagOrder(ArbolBinarioBusqueda arbol) {
     if (esArbolVacio(arbol)) return;
 
-    Cola colaActual; construir(colaActual);
-    Cola colaSiguiente; construir(colaSiguiente);
+    Pila pilaInversa; 
+    construir(pilaInversa);
+
+    Cola colaActual; 
+    construir(colaActual);
 
     encolar(colaActual, {arbol.raiz->elemento.numero});
     bool izquierdaDerecha = true;
     int nivel = 1;
 
-    cout << "Nivel 1: ";
+    // main loop to control the current level
     while (!esColaVacia(colaActual)) {
-        int numero = desencolar(colaActual).numero;
- 
-        NodoArbolBinarioBusqueda* nodo = obtenerNodo(arbol.raiz, numero);
+        cout << "Nivel " << nivel << ": ";
 
-        if (nodo) {
-            cout << nodo->elemento.numero << " ";
-
+        // lets iterate over the current queue length
+        int n = colaActual.longitud;
+        
+        // logic to process nodes for the current level
+        for (int i = 0; i < n; i++) {
+            int numero = desencolar(colaActual).numero;
+            // when its from left to right, I have to print the number directly
             if (izquierdaDerecha) {
-                if (nodo->izquierda) encolar(colaSiguiente, {nodo->izquierda->elemento.numero});
-                if (nodo->derecha) encolar(colaSiguiente, {nodo->derecha->elemento.numero});
+                cout << numero << " ";
             } else {
-                if (nodo->derecha) encolar(colaSiguiente, {nodo->derecha->elemento.numero});
-                if (nodo->izquierda) encolar(colaSiguiente, {nodo->izquierda->elemento.numero});
+                apilar(pilaInversa, {numero, 0});
+            }
+            // getting references from next level
+            NodoArbolBinarioBusqueda* nodo = obtenerNodo(arbol.raiz, numero);
+            if (nodo) {
+                if (nodo->izquierda) {
+                    encolar(colaActual, {nodo->izquierda->elemento.numero});
+                }
+                if (nodo->derecha) {
+                    encolar(colaActual, {nodo->derecha->elemento.numero});
+                }
             }
         }
-
-        if (esColaVacia(colaActual)) {
-            cout << endl;
-            izquierdaDerecha = !izquierdaDerecha;
-            
-            Cola temp = colaActual;
-            colaActual = colaSiguiente;
-            colaSiguiente = temp;
-            
-            if (!esColaVacia(colaActual)) {
-                nivel++;
-                cout << "Nivel " << nivel << ": ";
+        
+        // logic to print the current level based on the zigzag order
+        if (!izquierdaDerecha) {
+            // the stack used to print in the reverse order, 
+            // in the original version I haved used a List
+            // in this version I haved used a stack
+            while (!esPilaVacia(pilaInversa)) {
+                cout << desapilar(pilaInversa).numero << " ";
             }
         }
+        cout << endl;
+        
+        // switch the direction for the next level
+        izquierdaDerecha = !izquierdaDerecha;
+        nivel++;
     }
 }
 
